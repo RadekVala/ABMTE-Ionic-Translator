@@ -9,6 +9,7 @@ export class TranslationsService {
   constructor(private http: HttpClient) { }
 
   getTranslation(userInput:String){
-
+    let url = 'https://api.mymemory.translated.net/get?q='+userInput+'&langpair=en|cs';
+    return this.http.get(url);
   }
 }

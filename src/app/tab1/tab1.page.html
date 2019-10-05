@@ -7,9 +7,9 @@
 </ion-header>
 
 <ion-content>
-  <ion-input class="ion-padding" placeholder="Text for translation..."></ion-input>
+  <ion-input [(ngModel)]="userInput" class="ion-padding" placeholder="Text for translation..."></ion-input>
 
-  <ion-button class="ion-padding" expand="full">Translate</ion-button>
+  <ion-button (click)="btnTranslateClicked()" class="ion-padding" expand="full">Translate</ion-button>
 
   <ion-card class="ion-padding">
     <ion-card-header>
@@ -17,7 +17,7 @@
     </ion-card-header>
   
     <ion-card-content>
-      Vstup <ion-icon name="arrow-forward"></ion-icon> Výstup
+      {{ userInput }} <ion-icon name="arrow-forward"></ion-icon> Výstup
     </ion-card-content>
   </ion-card>
 </ion-content>

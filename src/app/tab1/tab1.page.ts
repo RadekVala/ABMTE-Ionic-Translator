@@ -7,6 +7,15 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
+  private userInput:String = ''
+
   constructor() {}
+
+  btnTranslateClicked(){
+    // button Translate click event handler
+    console.log(this.userInput);
+    // debugger;
+    
+  }
 
 }

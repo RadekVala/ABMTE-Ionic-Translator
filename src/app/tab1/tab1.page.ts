@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TranslationsService } from '../api/translations.service';
+import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
 
 @Component({
   selector: 'app-tab1',
@@ -7,14 +9,32 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  private userInput:String = ''
+  private userInput:string = ''
+  private output: string = ''
 
-  constructor() {}
+  constructor(
+    private api:TranslationsService,
+    private tts: TextToSpeech
+  ) {}
 
   btnTranslateClicked(){
     // button Translate click event handler
     console.log(this.userInput);
     // debugger;
+
+    // lets translate user input
+    this.api.getTranslation(this.userInput).subscribe(
+      (data) => {
+        // handle data from server
+        console.log(data);
+        // show the translation
+        this.output = data['responseData']['translatedText'];
+
+        this.tts.speak(this.output)
+        .then(() => console.log('Success'))
+        .catch((reason: any) => console.log(reason));
+      }
+    )
     
   }
 

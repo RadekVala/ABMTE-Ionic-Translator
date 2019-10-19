@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HistoryService } from '../api/history.service';
 import { TranslationsService } from '../api/translations.service';
 import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
 
@@ -16,6 +17,7 @@ export class Tab1Page {
 
   constructor(
     private api:TranslationsService,
+    private history: HistoryService,
     private tts: TextToSpeech
   ) {}
 
@@ -34,7 +36,7 @@ export class Tab1Page {
 
         // save to history
         let historyRecord = new HistoryRecord(this.userInput, this.output);
-
+        this.history.storeRecord(historyRecord);
         // text to speech plugin
         this.tts.speak(this.output)
         .then(() => console.log('Success'))

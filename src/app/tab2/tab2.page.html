@@ -9,7 +9,7 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let record of historyArray" >
-      <ion-label>{{ record.input }} {{ record.output}}</ion-label>
+      <ion-label>{{ record.input }} <ion-icon name="arrow-forward"></ion-icon> {{ record.output}}</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>
